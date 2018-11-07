@@ -1,5 +1,6 @@
 package com.buutcamp.config;
 
+import com.buutcamp.databaselogic.ClientDao;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -39,4 +40,18 @@ public class AppConfig {
         secDataSource.setMaxTotal(6);
         return secDataSource;
     }
+
+    /*@Bean
+    public ClientDao getClientInfoDao() {
+        ClientDao dao = new ClientDao();
+        DataSource ds = new BasicDataSource();
+        ((BasicDataSource) ds).setUsername("finuser");
+        ((BasicDataSource) ds).setPassword("finpw");
+        ((BasicDataSource) ds).setDriverClassName("com.mysql.cj.jdbc.Driver");
+        ((BasicDataSource) ds).setUrl("jdbc:mysql://localhost:3306/final_project?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
+
+        dao.setDataSource(ds);
+
+        return dao;
+    }*/
 }

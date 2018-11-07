@@ -5,27 +5,42 @@
 <!DOCTYPE html>
 <html lang="eng">
 <head>
-    <title>My page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style><%@include file="/WEB-INF/views/css/style.css"%></style>
 </head>
+
 <body>
+
 <div class="header">Forumtech</div>
+
 <div class="row">
-        <div class="column side" style="background-color:#aaa;">
+  <div class="column side" style="background-color:#aaa;"></div>
+
+  <div class="column middle" style="background-color:#bbb;">
+        <div>
+            <h3>Send message</h3>
+            <hr>
+            <form:form action="${pageContext.request.contextPath}/processMessage" modelAttribute="newmessage" method="POST">
+                    <c:if test="${registrationError != null}">
+                       <p style="color:red;"><c:out value="${registrationError}" /></p>
+                    </c:if>
+                <form:input path="userName" type="hidden" value="${currentUser}" />
+                <form:input path="title" placeholder="title" /><br/>
+                <form:textarea path="message" rows="5" cols="30" /><br/>
+                <input type="submit" value="Submit" />
+            </form:form>
         </div>
 
-        <div class="column middle" style="background-color:#bfbfbf;">
+        <br/>
+        <br/>
 
-            <p><c:out value="${webBeans}" /></p><br />
+        <a href="${pageContext.request.contextPath}/logout">logout</a>
+        <a href="${pageContext.request.contextPath}/editpage">editpage</a>
+  </div>
 
-            <a href="${pageContext.request.contextPath}/editpage">editpage</a>
-            <a href="${pageContext.request.contextPath}/postmessage">Send message</a>
-        </div>
-
-        <div class="column side" style="background-color:#ccc;">
-
+  <div class="column side" style="background-color:#ccc;">
+        <p>"${currentUser}"</p>
             <security:authorize access="isAuthenticated()">
                 authenticated as <security:authentication property="principal.username" />
                 <c:set var="rootContext" value="${pageContext.request.contextPath}/logout"/>
@@ -53,9 +68,12 @@
                     </form:form>
                      <br/>
                      <a href="${pageContext.request.contextPath}/registration">Register</a>
-              </security:authorize>
-        </div>
+            </security:authorize>
+  </div>
 </div>
+
 <div class="footer">copyright timj1</div>
+
 </body>
+
 </html>
