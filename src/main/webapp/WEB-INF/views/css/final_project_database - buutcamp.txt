@@ -1,0 +1,55 @@
+
+authorities
+	authority
+	username --->foreign key
+
+users
+	username --->primary key
+	password
+	enabled --->for bcrypt to work?
+
+messages
+	id
+	date_create
+	date_update
+	title
+	message
+	username --->foreign key
+
+threads --> todo
+	id
+	date_create
+	title
+
+Create table final_project.users (
+	username varchar(50) primary key,
+    	`password` varchar(68),
+     	enabled tinyint(1));
+    
+Create table final_project.authorities(
+     	username varchar(50),
+     	authority varchar(50),
+	FOREIGN KEY(username) REFERENCES final_project.users(username));
+     
+     //alter table final_project.authorities
+     //add constraint foreign key (username) references final_project.users(username);
+
+
+Create table final_project.messages (
+	id int NOT NULL AUTO_INCREMENT,
+	date_create DATETIME DEFAULT CURRENT_TIMESTAMP,
+	date_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	title varchar(45),
+	message varchar(255),	
+	username varchar(50), 
+	PRIMARY KEY (id),
+	FOREIGN KEY (username) REFERENCES final_project.users(username));
+
+
+//Alter table final_project.messages (
+//	add CONSTRAINT FOREIGN KEY (username) REFERENCES final_project.users(username));
+							
+	
+date_create DATETIME DEFAULT CURRENT_TIMESTAMP
+
+date_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
