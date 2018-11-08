@@ -29,6 +29,17 @@ public class Messages {
         this.userName = userName;
     }
 
+    @Override
+    public String toString() {
+        return "Messages{" +
+                "createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                ", titleName='" + titleName + '\'' +
+                ", message='" + message + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
+
     public Timestamp getCreateDate() {
         return createDate;
     }

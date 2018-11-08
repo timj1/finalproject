@@ -3,6 +3,7 @@ package com.buutcamp.controller;
 import com.buutcamp.config.AppConfig;
 import com.buutcamp.databaselogic.ClientDao;
 import com.buutcamp.objects.Messages;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -23,6 +24,9 @@ import java.util.Calendar;
 
 @Controller
 public class PostMessageController {
+
+    @Autowired
+    private ClientDao clientDao;
 
     @GetMapping("/postmessage")
     public String showPostmessage(Model model, Authentication authentication) {
@@ -48,14 +52,13 @@ public class PostMessageController {
         //Test if input is correct
         if (bindingResult.hasErrors()) {
 
-            redirectAttributes.addFlashAttribute("registrationError", "Title or message is too short");
+            redirectAttributes.addFlashAttribute("registrationError", "Title or message is too short or long");
             return "redirect:/postmessage";
         }
 
         String username = newMessage.getUserName();
         String title = newMessage.getTitle();
         String message = newMessage.getMessage();
-        ZonedDateTime zonedDateTime = ZonedDateTime.now();
 
         // (2) create a java sql date object we want to insert
         Calendar calendar = Calendar.getInstance();
@@ -64,9 +67,6 @@ public class PostMessageController {
         System.out.println(username);
         System.out.println(title);
         System.out.println(message);
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-
-        ClientDao clientDao = ctx.getBean(ClientDao.class);
 
         clientDao.createRow(new Messages(0,ourJavaDateObject ,ourJavaDateObject ,title,message, username));
 
@@ -74,7 +74,6 @@ public class PostMessageController {
         System.out.println(title);
         System.out.println(message);
 
-        ctx.close();
 
         return "redirect:/";
     }

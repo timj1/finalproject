@@ -31,4 +31,12 @@ public class ClientDao {
         return jdbcTemplate.update(query,args) == 1;
     }
 
+    public boolean updateRow(Messages messages) {
+        String query = "UPDATE messages SET message=?, date_update=? WHERE id=?";
+
+        Object[] args = new Object[] {messages.getMessage(),messages.getUpdateDate(),messages.getId()};
+
+        return jdbcTemplate.update(query,args) == 1;
+    }
+
 }

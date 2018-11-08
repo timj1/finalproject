@@ -20,11 +20,10 @@
 
   <div class="column middle" style="background-color:#bbb;">
 
-        <c:set var="rootContext" value="${pageContext.request.contextPath}/logout"/>
+        <c:set var="rootContext" value="${pageContext.request.contextPath}/"/>
 
-        <p><c:out value="${webBeans}"/></p>
         <br/>
-        <a href="${rootContext}">logout</a>
+        <a href="${rootContext}">main</a>
   </div>
 
   <div class="column side" style="background-color:#ccc;">

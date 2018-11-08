@@ -3,22 +3,18 @@ package com.buutcamp.controller;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class NewMessage {
+public class UpdateMessage {
 
     private String userName;
 
-    @NotNull
-    @Size(min=3, max=45)
-    private String title;
+    private int id;
 
     @NotNull
     @Size(min=2, max=255)
     private String message;
 
-    public NewMessage() {
+    public UpdateMessage() {
     }
-
-
 
     public String getUserName() {
         return userName;
@@ -28,12 +24,12 @@ public class NewMessage {
         this.userName = userName;
     }
 
-    public String getTitle() {
-        return title;
+    public int getId() {
+        return id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMessage() {

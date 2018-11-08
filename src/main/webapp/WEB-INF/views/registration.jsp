@@ -35,6 +35,8 @@
                         <input type="submit" value="Submit" />
 
                 </form:form>
+         <br />
+         <a href="${pageContext.request.contextPath}/">main</a>
   </div>
 
   <div class="column side" style="background-color:#ccc;">

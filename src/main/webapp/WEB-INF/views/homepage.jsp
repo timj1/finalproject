@@ -17,8 +17,27 @@
         </div>
 
         <div class="column middle" style="background-color:#bfbfbf;">
+            <h3>Thread</h3>
+            <hr/>
+            <div style="border:solid black 1px;" >
+                    <c:set var="column" value="1"/>
+                    <c:forEach items="${messagee}" var="currentListItem">
+                        <c:if test="${column == 1}">
 
-            <p><c:out value="${webBeans}" /></p><br />
+                        </c:if>
+                        <div style="float:left; border:solid black 1px;"> <p style="margin:0;padding-right:20px;"><c:out value="${currentListItem.titleName}"/></p></div>
+                        <div style="border:solid black 1px;"><p style="margin:0;"> - user <c:out value="${currentListItem.userName}"/></p> </div>
+                        <div> <c:out value="${currentListItem.createDate}"/> </div>
+                        <div style="border:solid green 1px;"><p> <c:out value="${currentListItem.message}"/></p> </div>
+                        <div>--------------------------------------------------------------</div>
+
+                        <c:if test="${column == 2}">
+
+                            <c:set var="column" value="0"/>
+                        </c:if>
+                        <c:set var="column" value="${column+1}"/>
+                    </c:forEach>
+            </div>
 
             <a href="${pageContext.request.contextPath}/editpage">editpage</a>
             <a href="${pageContext.request.contextPath}/postmessage">Send message</a>

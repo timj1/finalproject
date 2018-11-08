@@ -17,6 +17,10 @@ html, body {
     padding:0;
 }
 
+div {
+word-wrap: break-word;
+}
+
 /* Style the header */
 .header {
     background-color: #ADD8E6;

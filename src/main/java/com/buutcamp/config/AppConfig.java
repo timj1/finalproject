@@ -1,6 +1,7 @@
 package com.buutcamp.config;
 
 import com.buutcamp.databaselogic.ClientDao;
+import com.mysql.cj.jdbc.MysqlDataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
+import javax.xml.crypto.Data;
 
 @Configuration
 @EnableWebMvc
@@ -41,7 +43,9 @@ public class AppConfig {
         return secDataSource;
     }
 
-    /*@Bean
+
+
+    @Bean
     public ClientDao getClientInfoDao() {
         ClientDao dao = new ClientDao();
         DataSource ds = new BasicDataSource();
@@ -53,5 +57,5 @@ public class AppConfig {
         dao.setDataSource(ds);
 
         return dao;
-    }*/
+    }
 }

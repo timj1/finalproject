@@ -14,10 +14,11 @@ messages
 	date_update
 	title
 	message
-	username --->foreign key
+	username --->foreign key references final_project.users(username)
+	id_threads --->foreign key
 
 threads --> todo
-	id
+	id_threads
 	date_create
 	title
 
@@ -30,10 +31,6 @@ Create table final_project.authorities(
      	username varchar(50),
      	authority varchar(50),
 	FOREIGN KEY(username) REFERENCES final_project.users(username));
-     
-     //alter table final_project.authorities
-     //add constraint foreign key (username) references final_project.users(username);
-
 
 Create table final_project.messages (
 	id int NOT NULL AUTO_INCREMENT,
@@ -53,3 +50,20 @@ Create table final_project.messages (
 date_create DATETIME DEFAULT CURRENT_TIMESTAMP
 
 date_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+
+----how to deploy when ready----
+war packaging
+maven war plugin
+properties - maven compiler source and target
+
+mvn --version //check if you have maven
+mvn package
+
+target folder project 1.0-snapshot.war
+
+heroku.com - test your website
+
+server needs
+java -vesion
+tomcat
