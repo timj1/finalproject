@@ -19,6 +19,7 @@ html, body {
 
 div {
 word-wrap: break-word;
+height:100%;
 }
 
 /* Style the header */

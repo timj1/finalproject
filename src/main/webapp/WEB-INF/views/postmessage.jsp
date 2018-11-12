@@ -27,7 +27,7 @@
                     </c:if>
                 <form:input path="userName" type="hidden" value="${currentUser}" />
                 <form:input path="title" placeholder="title" /><br/>
-                <form:textarea path="message" rows="5" cols="30" /><br/>
+                <form:textarea path="message" rows="12" cols="60" maxlength="600"/><br/>
                 <input type="submit" value="Submit" />
             </form:form>
         </div>

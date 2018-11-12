@@ -16,7 +16,6 @@ public class ClientDao {
     public List<Messages> getAllData() {
         String query = "SELECT * FROM messages";
         List<Messages> messages = jdbcTemplate.query(query,new ClientRowMapper());
-
         return messages;
     }
 

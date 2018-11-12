@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
 
                 //defines URL's to have a role requirement
-                .antMatchers("/editpage").hasRole("visitor")
+                .antMatchers("/updatemessage").hasRole("visitor")
                 .antMatchers("/postmessage").authenticated()
                 .antMatchers("/manager").hasRole("manager")
                 .and()
@@ -96,7 +96,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 	date_create DATETIME DEFAULT CURRENT_TIMESTAMP,
      * 	date_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
      * 	title varchar(45),
-     * 	message varchar(255),
+     * 	message varchar(600),
      * 	username varchar(50),
      * 	PRIMARY KEY (id),
      * 	FOREIGN KEY (username) REFERENCES final_project.users(username));

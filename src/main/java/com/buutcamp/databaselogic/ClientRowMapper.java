@@ -17,7 +17,7 @@ public class ClientRowMapper implements RowMapper<Messages> {
 
         messages.setMessage(resultSet.getString("message"));
         messages.setUserName(resultSet.getString("username"));
-
+        System.out.println("RowMapper" + messages);
         return messages;
     }
 }

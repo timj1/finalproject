@@ -32,7 +32,8 @@ public class Messages {
     @Override
     public String toString() {
         return "Messages{" +
-                "createDate=" + createDate +
+                "id=" + id +
+                ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 ", titleName='" + titleName + '\'' +
                 ", message='" + message + '\'' +

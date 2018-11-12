@@ -60,7 +60,7 @@ public class PostMessageController {
         String title = newMessage.getTitle();
         String message = newMessage.getMessage();
 
-        // (2) create a java sql date object we want to insert
+        //create a java sql date object we want to insert
         Calendar calendar = Calendar.getInstance();
         java.sql.Timestamp ourJavaDateObject = new java.sql.Timestamp(calendar.getTime().getTime());
 

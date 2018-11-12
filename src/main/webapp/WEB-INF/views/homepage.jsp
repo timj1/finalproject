@@ -19,23 +19,42 @@
         <div class="column middle" style="background-color:#bfbfbf;">
             <h3>Thread</h3>
             <hr/>
-            <div style="border:solid black 1px;" >
+            <div style="" >
                     <c:set var="column" value="1"/>
                     <c:forEach items="${messagee}" var="currentListItem">
-                        <c:if test="${column == 1}">
+                    <div style="border:solid grey 1px;">
+                        <c:url var="updateLink" value="updateMessage">
+                            <c:param name="messageIdUpdate" value="${currentListItem.id}" />
+                            <c:param name="userNameUpdate" value="${currentListItem.userName}" />
+                            <c:param name="titleUpdate" value="${currentListItem.titleName}" />
+                            <c:param name="messageUpdate" value="${currentListItem.message}" />
+                        </c:url>
 
-                        </c:if>
-                        <div style="float:left; border:solid black 1px;"> <p style="margin:0;padding-right:20px;"><c:out value="${currentListItem.titleName}"/></p></div>
-                        <div style="border:solid black 1px;"><p style="margin:0;"> - user <c:out value="${currentListItem.userName}"/></p> </div>
-                        <div> <c:out value="${currentListItem.createDate}"/> </div>
-                        <div style="border:solid green 1px;"><p> <c:out value="${currentListItem.message}"/></p> </div>
-                        <div>--------------------------------------------------------------</div>
+                    <div style="background-color:#d9d9d9;border-bottom:solid grey 1px;">
+                        <div style="float:left;"> <p style="margin:0;padding-right:20px;"><c:out value="${currentListItem.titleName}"/></p></div>
+                        <div style=""><p style="margin:0;padding-right:20px;"> - user <c:out value="${currentListItem.userName}"/></p> </div>
 
-                        <c:if test="${column == 2}">
+                        <div style="">
+                            <security:authorize access="isAuthenticated()">
+                                <security:authentication var="authUser" property="principal.username" />
+                                <c:if test="${authUser == currentListItem.userName}">
+                                    <a href="${updateLink}" style="">Update</a>
+                                </c:if>
+                            </security:authorize>
+                        </div>
 
-                            <c:set var="column" value="0"/>
-                        </c:if>
-                        <c:set var="column" value="${column+1}"/>
+                        <div>
+                            <c:out value="${currentListItem.createDate}"/>
+                        </div>
+                    </div>
+                        <div style="">
+                             <p> <c:out value="${currentListItem.message}"/></p>
+                             <c:if test="${currentListItem.createDate != currentListItem.updateDate}">
+                                 <p style="margin:0;padding:0;font-size:14px;">updated  -  <c:out value="${currentListItem.updateDate}" /></p>
+                             </c:if>
+                         </div>
+
+                    </div><br/>
                     </c:forEach>
             </div>
 
@@ -61,12 +80,12 @@
                             <p style="color:green;"><c:out value="${registrationComplete}" /></p>
                         </c:if>
 
-                        <c:if test="${param.error != nul}">
+                        <c:if test="${param.error != null}">
                             <p style="color:red;">Invalid username or password</p>
                         </c:if>
 
-                        <label>Username: </label><input type="text" name="username" />
-                        <label>Password: </label><input type="password" name="password" />
+                        <p><label>Username: </label><input type="text" name="username" /></p>
+                        <p><label>Password: </label><input type="password" name="password" /></p>
                         <input type="submit" value"Submit" />
 
                     </form:form>

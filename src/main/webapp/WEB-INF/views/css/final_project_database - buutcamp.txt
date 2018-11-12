@@ -22,6 +22,9 @@ threads --> todo
 	date_create
 	title
 
+--------------------- Database mysql ------------------------------
+--- database: final_project, username: finuser, password: finpw ---
+
 Create table final_project.users (
 	username varchar(50) primary key,
     	`password` varchar(68),
@@ -37,19 +40,20 @@ Create table final_project.messages (
 	date_create DATETIME DEFAULT CURRENT_TIMESTAMP,
 	date_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	title varchar(45),
-	message varchar(255),	
+	message varchar(600),
 	username varchar(50), 
 	PRIMARY KEY (id),
 	FOREIGN KEY (username) REFERENCES final_project.users(username));
 
+-------------------------------------------------------------------
 
 //Alter table final_project.messages (
 //	add CONSTRAINT FOREIGN KEY (username) REFERENCES final_project.users(username));
 							
 	
-date_create DATETIME DEFAULT CURRENT_TIMESTAMP
+//date_create DATETIME DEFAULT CURRENT_TIMESTAMP
 
-date_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+//date_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 
 ----how to deploy when ready----
@@ -65,5 +69,5 @@ target folder project 1.0-snapshot.war
 heroku.com - test your website
 
 server needs
-java -vesion
+java -version
 tomcat

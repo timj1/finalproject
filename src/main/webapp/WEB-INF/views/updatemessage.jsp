@@ -21,14 +21,15 @@
         <div>
             <h3>Send message</h3>
             <hr>
-            <form:form action="${pageContext.request.contextPath}/processMessage" modelAttribute="newmessage" method="POST">
+            <form:form action="${pageContext.request.contextPath}/processUpdate" modelAttribute="newmessage" method="POST">
                     <c:if test="${registrationError != null}">
                        <p style="color:red;"><c:out value="${registrationError}" /></p>
                     </c:if>
-                <form:input path="userName" type="hidden" value="${currentUser}" />
-                <form:input path="title" placeholder="title" /><br/>
-                <form:textarea path="message" rows="5" cols="30" /><br/>
-                <input type="submit" value="Submit" />
+                <form:input path="id" type="hidden" value="${messageIdUpdate}" />
+                <form:input path="userName" type="hidden" value="${userNameUpdate}" />
+                <form:input path="title" value="${titleUpdate}" /><br/>
+                <form:textarea path="message" rows="12" cols="60" maxlength="600" /><br/>
+                <input type="submit" value="Submit" /> <p><c:out value="${messageIdUpdate}" /></p>
             </form:form>
         </div>
 

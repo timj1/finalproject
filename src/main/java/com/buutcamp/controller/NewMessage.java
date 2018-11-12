@@ -7,18 +7,26 @@ public class NewMessage {
 
     private String userName;
 
+    private int id;
+
     @NotNull
     @Size(min=3, max=45)
     private String title;
 
     @NotNull
-    @Size(min=2, max=255)
+    @Size(min=2, max=600)
     private String message;
 
     public NewMessage() {
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;
